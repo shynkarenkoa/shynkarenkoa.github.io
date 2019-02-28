@@ -786,7 +786,6 @@ var PushKaWrapper = function( params )
         //heightEl(overlay);
         //heightEl(box);
         overlay.style.display = 'none';
-
         return overlay;
     }
 
