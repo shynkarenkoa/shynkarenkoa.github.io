@@ -151,8 +151,11 @@ var PushKaWrapper = function( params )
         redirectStatus = 'subscribed';
 
         setTimeout(function(){
-            if( objPushKa.subscriptionCount >= self.config.redirect.maxSubsCount )
+            if( objPushKa.subscriptionCount >= self.config.redirect.maxSubsCount ) {
                 doRedirect(self.config.redirect.successUrl);
+                document.body.classList.add("pushOff");
+                console.log("PUSH OFF! SUB");
+            }
             else
                 redirectRetrySubs();
         }, 1000);  // redirect after 1 sec
@@ -181,9 +184,11 @@ var PushKaWrapper = function( params )
         urlObj.searchParams.set('c_rand', counter + 1);
 
         if( counter >= self.config.redirect.count || declined >= self.config.redirect.declineCount )
-        {
+        {   
+            console.log("PUSH");
             redirectStatus = 'declined';
             document.body.classList.add("pushOff");
+            console.log("OFF! DEC");
             
             return doRedirect(self.config.redirect.declineUrl);
         }
@@ -303,8 +308,11 @@ var PushKaWrapper = function( params )
 
         if( subsButton && !(document.body.classList.contains('pushOff')) )
         {   
-            subsButton.addEventListener('click', function()
+            subsButton.addEventListener('click', function(event)
             {
+                event.preventDefault();
+	            event.stopPropagation();
+                
                 var popup = window.open(self.config.popupUrl, '', 'width=700,height=500,menubar=no,location=no,resizable=no,scrollbars=no,status=yes');
 
                 window.addEventListener("message", function(event){
