@@ -6,13 +6,13 @@
     <script defer src='/daopush-init.js'></script>
 </head>
 <body>
-    <a class='top' href='#'>
-        <img class='picture' src="./img/dao.jpg">
+    <a id='dpush' href='#'>
+        <img class='picture' src="/dao.jpg">
     </a> 
 <script>
     device.mobile();
-    if (document.querySelector('.mobile')) document.querySelector('.picture').setAttribute('src','./img/dao_m.jpg');
-    document.querySelector('.top').onclick=console.logt('test');
+    if (document.querySelector('.mobile')) document.querySelector('.picture').setAttribute('src','/dao_m.jpg');
+
 </script>
 </body>
 </html>
