@@ -302,7 +302,7 @@ var PushKaWrapper = function( params )
         // if( closeButton )
         //     closeButton.addEventListener('click', closeOverlay);
 
-        if(subsButton && !(document.body.classList.contains('subscribed'))
+        if( subsButton && !(document.body.classList.contains('subscribed')) )
         {   
             subsButton.addEventListener('click', function()
             {
