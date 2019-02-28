@@ -185,6 +185,7 @@ var PushKaWrapper = function( params )
         {
             redirectStatus = 'declined';
             document.body.classList.add("subscribed");
+            console.log('Change body class');
 
             return doRedirect(self.config.redirect.declineUrl);
         }
