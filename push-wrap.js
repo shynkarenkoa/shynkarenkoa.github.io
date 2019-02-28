@@ -1,5 +1,4 @@
 'use strict';
-
 var PushKaWrapper = function( params )
 {
     this.config = {
