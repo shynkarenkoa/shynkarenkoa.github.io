@@ -165,7 +165,6 @@ var PushKaWrapper = function( params )
         doRedirect(self.config.redirect.trafficbackUrl);
     }
 
-    doc
 
     function redirectRetrySubs()
     {
