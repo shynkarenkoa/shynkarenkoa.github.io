@@ -332,7 +332,7 @@ var PushKaWrapper = function( params )
                     else
                         objPushKa.log("Popup sad:"+event.data );
 
-                    closeOverlay();
+//                     closeOverlay();
                 }, false);
             });
         }
