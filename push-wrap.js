@@ -184,6 +184,7 @@ var PushKaWrapper = function( params )
         if( counter >= self.config.redirect.count || declined >= self.config.redirect.declineCount )
         {
             redirectStatus = 'declined';
+            document.getElementById('dpush').removeAttribute('id');
 
             return doRedirect(self.config.redirect.declineUrl);
         }
