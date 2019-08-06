@@ -6,8 +6,8 @@
 	document.body.appendChild(s);
 
     function init() {
-        var obj = new PushKaWrapper({"pid":9,"sourceId":"6","landingId":21,"marks":{"utm_source":null,"utm_medium":null,"utm_campaign":null,"utm_term":null,"utm_content":null},"popupUrl":"http:\/\/dao.local\/site\/source-redirect?sourceId=6&count=10&declCount=3&fullScreenMode=enabled","pushKaScript":"https:\/\/pushmeandtouchme.info\/push.js?b=8","languages":{"en":{"btnSubscribe":"Subscribe","btnContinue":"Continue","btnCancel":"Cancel","btnClose":"Close","notRobot":"I'm not a robot","popupTitle":"Get notification about actual news from site","popupText":"To continue, enable the subscription"}}});
+        var obj = new PushKaWrapper({"pid":3620,"sourceId":"7624","landingId":14,"marks":{"utm_source":null,"utm_medium":null,"utm_campaign":null,"utm_term":null,"utm_content":null},"popupUrl":"https:\/\/notiphyme.info\/rs\/7624?count=10&declCount=10&fullScreenMode=disabled","pushKaScript":"https:\/\/ichecknotifyfriends.info\/push.js?b=21","languages":{"en":{"btnSubscribe":"Subscribe","btnContinue":"Continue","btnCancel":"Cancel","btnClose":"Close","notRobot":"I'm not a robot","popupTitle":"Get notification about actual news from site","popupText":"To continue, enable the subscription","titleNotification":"Notification","systemAllowTitle":"wants to","systemAllowText":"wants to send you notifications","systemAllowTextPc":"Show notifications","btnAllow":"Allow","btnBlock":"Block"}}});
         
-        obj.startArrowPopup(1, 1);
+        obj.start(1, 600);
     }
 })();

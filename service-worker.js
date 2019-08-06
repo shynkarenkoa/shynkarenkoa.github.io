@@ -5,7 +5,7 @@ var PushKaSw = function()
     var sw = this;
 
     this.mode       = 'debug';
-    this.version    = 2;
+    this.version    = 3;
     this.apiBaseUrl = self.location.host === 'localhost' || self.location.host === '127.0.0.1' ? 'http://'+self.location.host+'/api/' : 'https://burningpush.info/api/';
 
     this.storage        = (new IndexDbStorage('push-ka', 'params'));
@@ -46,10 +46,20 @@ var PushKaSw = function()
         event.waitUntil(
             sw.storage.get('sid').then(function(subsId)
             {
-                self.registration.pushManager.getSubscription().then(function(subscription)
+                sw.storage.get('srv').then(function(srvId)
                 {
-                    fetchAndShowMessage(subsId, subscription.endpoint);
-                });
+                    self.registration.pushManager.getSubscription().then(function(subscription)
+                    {
+                        fetchAndShowMessage(subsId, subscription.endpoint, srvId);
+                    });
+                })
+                .catch(function(e){ // write error & send request for message
+                    error(e);
+                    self.registration.pushManager.getSubscription().then(function(subscription)
+                    {
+                        fetchAndShowMessage(subsId, subscription.endpoint, null);
+                    });
+                })
             })
             .catch(function(e){error(e);})
         );
@@ -103,10 +113,10 @@ var PushKaSw = function()
         return true;
     }
 
-    function fetchAndShowMessage(subsId, subsEndpoint)
+    function fetchAndShowMessage(subsId, subsEndpoint, serverId)
     {
         var endpoint = subsId ? null : (subsEndpoint ? subsEndpoint : null);
-        var url = sw.apiBaseUrl+'subscription/message?subsId='+encodeURIComponent(subsId)+(endpoint ? '&subsEndpoint='+encodeURIComponent(endpoint) : '');
+        var url = sw.apiBaseUrl+'subscription/message?subsId='+encodeURIComponent(subsId)+(endpoint ? '&subsEndpoint='+encodeURIComponent(endpoint) : '')+(serverId ? '&srv='+encodeURIComponent(serverId) : '');
 
         fetch(url, {
             headers: {

